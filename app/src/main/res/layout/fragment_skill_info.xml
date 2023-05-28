@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,211 +7,234 @@
     android:orientation="vertical"
     tools:context=".Fragments.SkillInfoFragment">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:rowCount="3"
-        android:id="@+id/gridView">
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:cardBackgroundColor="@color/black"
-            app:strokeWidth="1dp"
-            android:layout_marginVertical="5dp"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn1"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="全部"
-                android:textColor="@color/white"
-                android:id="@+id/text1"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:strokeWidth="1dp"
-            android:layout_marginVertical="5dp"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn2"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="製造工程技術"
-                android:textColor="@color/black"
-                android:id="@+id/text2"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:strokeWidth="1dp"
-            android:layout_marginVertical="5dp"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn3"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="營建技術"
-                android:textColor="@color/black"
-                android:id="@+id/text3"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:strokeWidth="1dp"
-            android:layout_columnWeight="1"
-            android:layout_marginVertical="5dp"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn4"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="資訊與通訊技術"
-                android:textColor="@color/black"
-                android:id="@+id/text4"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_marginVertical="5dp"
-            app:strokeWidth="1dp"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn5"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="運輸與物流"
-                android:textColor="@color/black"
-                android:id="@+id/text5"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_marginVertical="5dp"
-            app:strokeWidth="1dp"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn6"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="社會與個人服務"
-                android:textColor="@color/black"
-                android:id="@+id/text6"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:strokeWidth="1dp"
-            android:layout_marginVertical="5dp"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn7"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="藝術與時尚"
-                android:textColor="@color/black"
-                android:id="@+id/text7"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_marginVertical="5dp"
-            app:strokeWidth="1dp"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn8"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="青少年組"
-                android:textColor="@color/black"
-                android:id="@+id/text8"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:strokeWidth="1dp"
-            android:layout_marginVertical="5dp"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="5dp"
-            android:id="@+id/btn9"
-            android:layout_marginRight="10dp"
-            app:strokeColor="@color/deepBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="未來職類"
-                android:textColor="@color/black"
-                android:id="@+id/text9"
-                android:layout_gravity="center"/>
-        </com.google.android.material.card.MaterialCardView>
-    </GridLayout>
-
-    <GridView
-        android:id="@+id/gridView2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animationCache="false"
-        android:scrollingCache="false"
-        android:numColumns="3"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:padding="10dp" />
+        android:orientation="vertical">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:rowCount="3"
+            android:id="@+id/gridView">
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:cardBackgroundColor="@color/black"
+                app:strokeWidth="1dp"
+                android:layout_marginVertical="5dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn1"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全部"
+                    android:textColor="@color/white"
+                    android:id="@+id/text1"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
 
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/img"/>-->
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:strokeWidth="1dp"
+                android:layout_marginVertical="5dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn2"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="製造工程技術"
+                    android:textColor="@color/black"
+                    android:id="@+id/text2"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:strokeWidth="1dp"
+                android:layout_marginVertical="5dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn3"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="營建技術"
+                    android:textColor="@color/black"
+                    android:id="@+id/text3"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:strokeWidth="1dp"
+                android:layout_columnWeight="1"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn4"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="資訊與通訊技術"
+                    android:textColor="@color/black"
+                    android:id="@+id/text4"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginVertical="5dp"
+                app:strokeWidth="1dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn5"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="運輸與物流"
+                    android:textColor="@color/black"
+                    android:id="@+id/text5"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginVertical="5dp"
+                app:strokeWidth="1dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn6"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="社會與個人服務"
+                    android:textColor="@color/black"
+                    android:id="@+id/text6"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:strokeWidth="1dp"
+                android:layout_marginVertical="5dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn7"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="藝術與時尚"
+                    android:textColor="@color/black"
+                    android:id="@+id/text7"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginVertical="5dp"
+                app:strokeWidth="1dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn8"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="青少年組"
+                    android:textColor="@color/black"
+                    android:id="@+id/text8"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:strokeWidth="1dp"
+                android:layout_marginVertical="5dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/btn9"
+                android:layout_marginRight="10dp"
+                app:strokeColor="@color/deepBlue">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未來職類"
+                    android:textColor="@color/black"
+                    android:id="@+id/text9"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.card.MaterialCardView>
+        </GridLayout>
+
+        <GridView
+            android:id="@+id/gridView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animationCache="false"
+            android:scrollingCache="false"
+            android:numColumns="3"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
+            android:padding="10dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/dialogBac"
+        android:visibility="gone"
+        android:alpha="0"
+        android:background="#AB2E2E2E"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/dialog"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="30dp"
+        android:alpha="0"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/deepBlue">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
-</LinearLayout>
+</RelativeLayout>

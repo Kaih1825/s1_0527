@@ -1,21 +1,20 @@
 package com.example.s1_0527.Fragments
 
-import android.content.res.ColorStateList
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.SimpleAdapter
+import android.widget.AdapterView
+import androidx.fragment.app.Fragment
 import com.example.s1_0527.Adapters.SkillsGridViewAdapter
-import com.example.s1_0527.R
 import com.example.s1_0527.databinding.FragmentSkillInfoBinding
 import org.json.JSONArray
+import kotlin.math.log
 
 
 class SkillInfoFragment : Fragment() {
@@ -81,6 +80,70 @@ class SkillInfoFragment : Fragment() {
         val nc = sortedIndices.map { category[it] }
         val nd = sortedIndices.map { description[it] }
         b.gridView2.adapter=SkillsGridViewAdapter(requireContext(),ni,nt)
+
+        var animation=ValueAnimator.ofFloat(0.0f,1.0f)
+        animation.duration=500
+        animation.addUpdateListener {animation
+            var value=animation.animatedValue as Float
+            b.dialog.scaleX=value
+            b.dialog.scaleY=value
+            b.dialog.alpha=value
+            b.dialogBac.alpha=value
+            b.dialog.rotation=360*value
+        }
+
+        var animationColse=ValueAnimator.ofFloat(1f,0f)
+        animationColse.duration=500
+        animationColse.addUpdateListener {animation
+            var value=animationColse.animatedValue as Float
+            b.dialog.scaleX=value
+            b.dialog.scaleY=value
+            b.dialog.alpha=value
+            b.dialogBac.alpha=value
+            b.dialog.rotation=360*value
+        }
+
+        animationColse.addListener(object :Animator.AnimatorListener{
+            override fun onAnimationStart(animation: Animator) {
+//                TODO("Not yet implemented")
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+//                TODO("Not yet implemented")
+                b.dialogBac.visibility=View.GONE
+                b.dialog.visibility=View.GONE
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+//                TODO("Not yet implemented")
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
+//                TODO("Not yet implemented")
+            }
+
+        })
+
+        b.dialogBac.setOnClickListener {
+            animationColse.start()
+        }
+
+
+        b.gridView2.setOnItemClickListener(object : AdapterView.OnItemClickListener{
+            override fun onItemClick(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                b.dialogBac.visibility=View.VISIBLE
+                b.dialog.visibility=View.VISIBLE
+                animation.start()
+
+            }
+        })
+
+        b.dialog.setOnClickListener{}
         return b.root
     }
 }
