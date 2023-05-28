@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
         var typeArray= arrayOf("全部","全國賽","身障賽","國際賽","展能節","達人盃")
 
         val celent = OkHttpClient().newBuilder().build()
-        var request = Request.Builder().url("http://192.168.50.184/getallnews/").build()
+        var request = Request.Builder().url("http://192.168.1.181:8485/news").build()
         var call = celent.newCall(request)
         var title = arrayListOf<String>()
         var type = arrayListOf<String>()
@@ -61,20 +61,24 @@ class HomeFragment : Fragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 val jsonText = response.body!!.string()
+//                Log.e("Tag", jsonText, )
                 var jsonArray = JSONArray(jsonText)
                 for (i in 0 until jsonArray.length()) {
                     var jsonObject = jsonArray.getJSONObject(i)
                     title.add(jsonObject.getString("title"))
                     type.add(jsonObject.getString("type"))
-                    var tisDate=jsonObject.getString("date")
-                    var formate=SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                    var dateFormate=SimpleDateFormat("yyyy-MM-dd")
-                    date.add(dateFormate.format(formate.parse(tisDate)))
+//                    var tisDate=jsonObject.getString("date")
+//                    var formate=SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+//                    var dateFormate=SimpleDateFormat("yyyy-MM-dd")
+//                    date.add(dateFormate.format(formate.parse(tisDate)))
+                    date.add(jsonObject.getString("date"))
                     id.add(jsonObject.getInt("id"))
                 }
 
                 activity!!.runOnUiThread {
-                    b.list.adapter = NewsListAdapter(requireContext(),3, date, type, title,id)
+                    var c=3
+                    if(date.count()<3) c=date.count()
+                    b.list.adapter = NewsListAdapter(requireContext(),c, date, type, title,id)
                 }
             }
         })

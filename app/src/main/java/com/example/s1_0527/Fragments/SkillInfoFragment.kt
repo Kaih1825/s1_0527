@@ -2,15 +2,20 @@ package com.example.s1_0527.Fragments
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.SimpleAdapter
+import com.example.s1_0527.Adapters.SkillsGridViewAdapter
 import com.example.s1_0527.R
 import com.example.s1_0527.databinding.FragmentSkillInfoBinding
+import org.json.JSONArray
 
 
 class SkillInfoFragment : Fragment() {
@@ -23,23 +28,25 @@ class SkillInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var b=FragmentSkillInfoBinding.inflate(layoutInflater)
-        val type= arrayOf("全部","製造工程項目","營建技術","資訊與通訊技術","運輸與物流","社會與個人服務","藝術與時尚","青少年組","未來職類")
+        var b = FragmentSkillInfoBinding.inflate(layoutInflater)
+        val type =
+            arrayOf("全部", "製造工程項目", "營建技術", "資訊與通訊技術", "運輸與物流", "社會與個人服務", "藝術與時尚", "青少年組", "未來職類")
 
-        val items= arrayListOf<HashMap<String,Any>>()
+        val items = arrayListOf<HashMap<String, Any>>()
 
-        for(i in 0 until type.count()){
-            var item=HashMap<String,Any>()
-            item["name"]=type[i]
+        for (i in 0 until type.count()) {
+            var item = HashMap<String, Any>()
+            item["name"] = type[i]
             items.add(item)
         }
 
-        val button= arrayOf(b.btn1,b.btn2,b.btn3,b.btn4,b.btn5,b.btn6,b.btn7,b.btn8,b.btn9)
-        val txt= arrayOf(b.text1,b.text2,b.text3,b.text4,b.text5,b.text6,b.text7,b.text8,b.text9)
+        val button = arrayOf(b.btn1, b.btn2, b.btn3, b.btn4, b.btn5, b.btn6, b.btn7, b.btn8, b.btn9)
+        val txt =
+            arrayOf(b.text1, b.text2, b.text3, b.text4, b.text5, b.text6, b.text7, b.text8, b.text9)
 
-        for(i in 0 until button.count()){
+        for (i in 0 until button.count()) {
             button[i].setOnClickListener {
-                for(j in 0 until txt.count()){
+                for (j in 0 until txt.count()) {
                     button[j].setCardBackgroundColor(Color.WHITE)
                     txt[j].setTextColor(Color.BLACK)
                 }
@@ -47,6 +54,33 @@ class SkillInfoFragment : Fragment() {
                 txt[i].setTextColor(Color.WHITE)
             }
         }
+
+        var jsonText = requireContext().assets.open("professions.json").bufferedReader().readText()
+        var jsonArray = JSONArray(jsonText)
+        var category = arrayListOf<String>()
+        var title = arrayListOf<String>()
+        var image = arrayListOf<String>()
+        var description = arrayListOf<String>()
+        var allArray = arrayListOf<ArrayList<String>>()
+        for (i in 0 until jsonArray.length()) {
+            var jsonObject = jsonArray.getJSONObject(i)
+            category.add(jsonObject.getString("category"))
+            title.add(jsonObject.getString("title"))
+            image.add(jsonObject.getString("image"))
+            description.add(jsonObject.getString("description"))
+        }
+        allArray.add(category)
+        allArray.add(title)
+        allArray.add(image)
+        allArray.add(description)
+
+        val sortedIndices = title.indices.sortedBy { title[it] }
+
+        val nt = sortedIndices.map { title[it] }
+        val ni = sortedIndices.map { image[it] }
+        val nc = sortedIndices.map { category[it] }
+        val nd = sortedIndices.map { description[it] }
+        b.gridView2.adapter=SkillsGridViewAdapter(requireContext(),ni,nt)
         return b.root
     }
 }

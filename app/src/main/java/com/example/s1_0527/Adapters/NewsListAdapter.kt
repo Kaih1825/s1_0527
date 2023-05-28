@@ -31,6 +31,7 @@ class NewsListAdapter(var context: Context,var itemCount:Int,var dateArray: Arra
         b.date.text=dateArray[position]
         b.title.text=titleArray[position]
         b.type.text=typpeArray[position]
+
         return b.root
     }
 }
