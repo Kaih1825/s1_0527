@@ -60,7 +60,7 @@ class MoreNews : Fragment() {
                 }
 
                 activity!!.runOnUiThread {
-                    b.list.adapter = NewsListAdapter(requireContext(),date.count(), date, type, title,id)
+//                    b.list.adapter = NewsListAdapter(requireContext(),date.count(), date, type, title,id)
                 }
             }
         })
@@ -93,7 +93,7 @@ class MoreNews : Fragment() {
                 }
 
                 requireActivity().runOnUiThread {
-                    b.list.adapter = NewsListAdapter(requireContext(),tisDate.count(), tisDate, tisType, tisTitle,tisId)
+//                    b.list.adapter = NewsListAdapter(requireContext(),tisDate.count(), tisDate, tisType, tisTitle,tisId)
                 }
             }
         }

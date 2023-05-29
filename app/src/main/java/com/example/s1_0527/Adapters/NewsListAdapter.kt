@@ -1,6 +1,7 @@
 package com.example.s1_0527.Adapters
 
 import android.content.Context
+import android.support.v4.app.INotificationSideChannel
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,13 +11,15 @@ import android.widget.BaseAdapter
 import com.example.s1_0527.databinding.NewsListBinding
 import okhttp3.*
 import okhttp3.internal.http.RequestLine
+import org.json.JSONObject
 import java.io.IOException
 
-class NewsListAdapter(var context: Context,var itemCount:Int,var dateArray: ArrayList<String>,var typpeArray:ArrayList<String>,var titleArray:ArrayList<String>,var idArray:java.util.ArrayList<Int>):BaseAdapter() {
+class NewsListAdapter(var context: Context,var jsonObjectArray:ArrayList<JSONObject>,var itemCount:Int):BaseAdapter() {
     override fun getCount(): Int {
         if(itemCount==-1){
-            return dateArray.count()
+            return jsonObjectArray.count()
         }
+        if(itemCount>jsonObjectArray.count()) return jsonObjectArray.count()
         return itemCount
     }
     override fun getItem(position: Int): Any {
@@ -29,9 +32,9 @@ class NewsListAdapter(var context: Context,var itemCount:Int,var dateArray: Arra
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var b=NewsListBinding.inflate(LayoutInflater.from(context))
-        b.date.text=dateArray[position]
-        b.title.text=titleArray[position]
-        b.type.text=typpeArray[position]
+        b.date.text=jsonObjectArray[position].getString("date")
+        b.title.text=jsonObjectArray[position].getString("title")
+        b.type.text=jsonObjectArray[position].getString("type")
         return b.root
     }
 }
