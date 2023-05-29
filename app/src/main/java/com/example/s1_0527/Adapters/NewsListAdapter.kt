@@ -1,6 +1,7 @@
 package com.example.s1_0527.Adapters
 
 import android.content.Context
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +32,6 @@ class NewsListAdapter(var context: Context,var itemCount:Int,var dateArray: Arra
         b.date.text=dateArray[position]
         b.title.text=titleArray[position]
         b.type.text=typpeArray[position]
-
         return b.root
     }
 }

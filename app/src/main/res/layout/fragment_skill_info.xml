@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".Fragments.SkillInfoFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -224,17 +225,88 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/dialog"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_centerInParent="true"
-        app:cardCornerRadius="30dp"
         android:alpha="0"
         android:visibility="gone"
-        app:cardBackgroundColor="@color/deepBlue">
+        android:clickable="true"
+        app:rippleColor="@android:color/transparent"
+        app:cardElevation="50dp"
+        app:cardCornerRadius="30dp">
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/dialogTitle"
+                    android:layout_marginBottom="5dp"
+                    android:text="Title"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="X"
+                    android:id="@+id/dialogCloseBtn1"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:rotation="180"
+                    android:id="@+id/dialogPre"
+                    android:layout_gravity="center"
+                    android:text=">>"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dialogImage"
+                    android:layout_weight="1"/>
+                <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dialogScrollView"
+                    android:scrollbars="none"
+                    android:layout_weight="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dialogText"/>
+                </ScrollView>
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/dialogNext"
+                    android:text=">>"/>
+            </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="關閉"
+                android:layout_gravity="center"
+                android:id="@+id/dialogCloseBtn2"
+                android:backgroundTint="@null"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
 
 
 </RelativeLayout>

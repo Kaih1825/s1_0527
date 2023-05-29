@@ -11,10 +11,11 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.example.s1_0527.R
 import com.example.s1_0527.databinding.SlillGridviewBinding
+import org.json.JSONObject
 
-class SkillsGridViewAdapter(var context: Context, var imagesArray: List<String>, var textArray: List<String>) : BaseAdapter() {
+class SkillsGridViewAdapter(var context: Context, var jsonObject:List<JSONObject>) : BaseAdapter() {
     override fun getCount(): Int {
-        return imagesArray.count()
+        return jsonObject.count()
     }
 
     override fun getItem(position: Int): Any {
@@ -34,11 +35,12 @@ class SkillsGridViewAdapter(var context: Context, var imagesArray: List<String>,
 
         b.img.setImageDrawable(null)
 
-        var inputStream = context.assets.open("professions/${imagesArray[position]}")
+        var inputStream = context.assets.open("professions/${jsonObject[position].getString("image")}")
         var d = Drawable.createFromStream(inputStream, null)
         b.img.setImageDrawable(d)
+        var text=jsonObject[position].getString("title")
         b.txt.text =
-            "${textArray[position].substring(0, 3)}\n${textArray[position].substring(3, textArray[position].length)}"
+            "${text.substring(0, 3)}\n${text.substring(3,text.length)}"
 
         return b.root
     }

@@ -12,6 +12,7 @@ import com.example.s1_0527.Adapters.HomeViewPagerAdapter
 import com.example.s1_0527.Adapters.NewsListAdapter
 import com.example.s1_0527.R
 import com.example.s1_0527.databinding.FragmentHomeBinding
+import kotlinx.coroutines.delay
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
@@ -47,12 +48,16 @@ class HomeFragment : Fragment() {
         var typeArray= arrayOf("全部","全國賽","身障賽","國際賽","展能節","達人盃")
 
         val celent = OkHttpClient().newBuilder().build()
-        var request = Request.Builder().url("http://192.168.1.181:8485/news").build()
+        var request = Request.Builder().url("http://10.0.2.2:8485/news").build()
         var call = celent.newCall(request)
         var title = arrayListOf<String>()
         var type = arrayListOf<String>()
         var date = arrayListOf<String>()
         var id= arrayListOf<Int>()
+        var image= arrayListOf<String>()
+        var authorType= arrayListOf<String>()
+        var context= arrayListOf<String>()
+        var hyperLink= arrayListOf<ArrayList<HashMap<String,String>>>()
 
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -61,18 +66,17 @@ class HomeFragment : Fragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 val jsonText = response.body!!.string()
-//                Log.e("Tag", jsonText, )
                 var jsonArray = JSONArray(jsonText)
                 for (i in 0 until jsonArray.length()) {
                     var jsonObject = jsonArray.getJSONObject(i)
                     title.add(jsonObject.getString("title"))
                     type.add(jsonObject.getString("type"))
-//                    var tisDate=jsonObject.getString("date")
-//                    var formate=SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-//                    var dateFormate=SimpleDateFormat("yyyy-MM-dd")
-//                    date.add(dateFormate.format(formate.parse(tisDate)))
                     date.add(jsonObject.getString("date"))
                     id.add(jsonObject.getInt("id"))
+                    image.add(jsonObject.getString("pics"))
+                    authorType.add(jsonObject.getInt("authorType").toString())
+                    context.add(jsonObject.getString("content"))
+                    hyperLink.add(arrayListOf(hashMapOf("linktext" to jsonObject.getString("linktext"),"url" to jsonObject.getString("url"))))
                 }
 
                 activity!!.runOnUiThread {
@@ -81,25 +85,45 @@ class HomeFragment : Fragment() {
                     b.list.adapter = NewsListAdapter(requireContext(),c, date, type, title,id)
                 }
             }
+
         })
+        Thread.sleep(1000)
+        Log.e("TAG", type.count().toString(), )
+        var tisTitle= title
+        var tisType= type
+        var tisDate= date
+        var tisImage= image
+        var tisId= id
+        var tisAuthorType= authorType
+        var tisContext= context
+        var tisHyperLink= hyperLink
         for (i in 0 until newsBtn.count()) {
             newsBtn[i].setOnClickListener {
+                Log.e("TAG2", type.count().toString(), )
                 for (j in 0 until newsBtn.count()) {
                     newsBtn[j].setCardBackgroundColor(Color.WHITE)
                     text[j].setTextColor(Color.BLACK)
                 }
                 newsBtn[i].setCardBackgroundColor(Color.BLACK)
                 text[i].setTextColor(Color.WHITE)
-                var tisTitle= arrayListOf<String>()
-                var tisType= arrayListOf<String>()
-                var tisDate= arrayListOf<String>()
-                var tisId= arrayListOf<Int>()
-                for(j in 0 until title.count()){
+                tisTitle.clear()
+                tisType.clear()
+                tisDate.clear()
+                tisImage.clear()
+                tisId.clear()
+                tisAuthorType.clear()
+                tisContext.clear()
+                tisHyperLink.clear()
+                for(j in 0 until type.count()){
                     if(type[j]==typeArray[i]){
                         tisTitle.add(title[j])
                         tisType.add(type[j])
                         tisDate.add(date[j])
                         tisId.add(id[j])
+                        tisImage.add(image[j])
+                        tisAuthorType.add(authorType[j])
+                        tisContext.add(context[j])
+                        tisHyperLink.add(hyperLink[j])
                     }
                 }
 
@@ -110,11 +134,10 @@ class HomeFragment : Fragment() {
                     tisId=id.clone() as ArrayList<Int>
                 }
 
-                requireActivity().runOnUiThread {
-                    var c=3
-                    if(tisDate.count()<3) c=tisDate.count()
-                    b.list.adapter = NewsListAdapter(requireContext(),c, tisDate, tisType, tisTitle,tisId)
-                }
+                var c=3
+                if(tisDate.count()<3) c=tisDate.count()
+                b.list.adapter = NewsListAdapter(requireContext(),c, tisDate, tisType, tisTitle,tisId)
+
             }
         }
 
@@ -123,6 +146,12 @@ class HomeFragment : Fragment() {
             fm.addToBackStack(fm.javaClass.name)
             fm.replace(R.id.layout,MoreNews()).commit()
         }
+
+        b.list.setOnItemClickListener { parent, view, position, id -> run{
+            var fm=requireFragmentManager().beginTransaction()
+            fm.addToBackStack(fm.javaClass.name)
+            fm.replace(R.id.layout,NewsInfoFragment(tisTitle[position],tisType[position],tisDate[position],tisAuthorType[position],tisContext[position],tisImage[position],tisHyperLink[position])).commit()
+        } }
 
         return b.root
     }
