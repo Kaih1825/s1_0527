@@ -100,8 +100,7 @@ class HomeFragment : Fragment() {
         b.list.setOnItemClickListener { parent, view, position, id -> run{
             var fm=requireFragmentManager().beginTransaction()
             fm.addToBackStack(fm.javaClass.name)
-//            fm.replace(R.id.layout,NewsInfoFragment(tisJsonObjectArray[position])).commit()
-            Log.e("TAG", tisJsonObjectArray.count().toString(), )
+            fm.replace(R.id.layout,NewsInfoFragment(tisJsonObjectArray[position])).commit()
         } }
 
         return b.root
