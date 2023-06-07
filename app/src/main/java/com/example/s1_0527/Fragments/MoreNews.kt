@@ -1,5 +1,6 @@
 package com.example.s1_0527.Fragments
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -7,8 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.ViewUtils
 import com.example.s1_0527.Adapters.NewsListAdapter
 import com.example.s1_0527.R
+import com.example.s1_0527.SqlMethod
 import com.example.s1_0527.databinding.FragmentMoreNewsBinding
 import okhttp3.*
 import org.json.JSONArray
@@ -31,6 +34,32 @@ class MoreNews : Fragment() {
             arrayOf(b.newsBtn1, b.newsBtn2, b.newsBtn3, b.newsBtn4, b.newsBtn5, b.newsBtn6)
         var text = arrayOf(b.text1, b.text2, b.text3, b.text4, b.text5, b.text6)
         var typeArray= arrayOf("全部","全國賽","身障賽","國際賽","展能節","達人盃")
+
+        var sp=requireContext().getSharedPreferences("user",Context.MODE_PRIVATE)
+        if(sp.getBoolean("login",false) && SqlMethod.userInfo(requireContext()).getType()!=2){
+            b.newNews.visibility=View.VISIBLE
+            b.star.visibility=View.INVISIBLE
+        }
+        else if(sp.getBoolean("login",false)){
+            b.newNews.visibility=View.INVISIBLE
+            b.star.visibility=View.VISIBLE
+        }
+        else{
+            b.newNews.visibility=View.INVISIBLE
+            b.star.visibility=View.INVISIBLE
+        }
+
+        b.star.setOnClickListener {
+            var fm=requireFragmentManager().beginTransaction()
+            fm.addToBackStack(fm.javaClass.name)
+            fm.replace(R.id.layout,AllStar()).commit()
+        }
+
+        b.newNews.setOnClickListener {
+            var fm=requireFragmentManager().beginTransaction()
+            fm.addToBackStack(fm.javaClass.name)
+            fm.replace(R.id.layout,NewNews()).commit()
+        }
 
         val celent = OkHttpClient().newBuilder().build()
         var request = Request.Builder().url("http://10.0.2.2:8485/news").build()
@@ -78,7 +107,7 @@ class MoreNews : Fragment() {
         b.list.setOnItemClickListener { parent, view, position, id -> run{
             var fm=requireFragmentManager().beginTransaction()
             fm.addToBackStack(fm.javaClass.name)
-            fm.replace(R.id.layout,NewsInfoFragment(tisJsonObjectArray[position])).commit()
+            fm.replace(R.id.layout,NewsInfoFragment(tisJsonObjectArray[position],null)).commit()
         } }
         var view=layoutInflater.inflate(R.layout.pre_page,b.root,false)
         b.page.addView(view)

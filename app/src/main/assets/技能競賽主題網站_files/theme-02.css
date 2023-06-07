@@ -1,0 +1,27 @@
+/*=========== SIDEBAR MENU ===========*/
+.sidebar {
+  color: #fff;
+  background-color: #353535!important;
+}
+/*------ sidebar main-menu ------*/
+.offcanvas.main-menu {
+  background-color: #353535!important;
+	color: #ffffff!important;
+}
+.offcanvas.main-menu .offcanvas-header .btn-close {
+	background-color: #7a7a7a!important;
+  padding: 4px!important;
+}
+.offcanvas.main-menu .nav-link {
+	color: #ffffff!important;
+}
+.offcanvas.main-menu .nav-link.active {
+  border-bottom: 2px solid #cccccc!important;
+}
+.offcanvas.main-menu .nav-link:hover, .offcanvas.main-menu .nav-link:focus {
+  background-color: #555555!important;
+}
+/*=========== OFFCANVAS SUBMENU ===========*/
+.offcanvas.oc-submenu .nav-link.active {
+  border-bottom: 2px solid #999999!important;
+}

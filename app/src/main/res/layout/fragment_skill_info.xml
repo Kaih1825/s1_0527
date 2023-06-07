@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="@color/iconColor"
                 app:strokeWidth="1dp"
                 android:layout_marginVertical="5dp"
                 android:layout_columnWeight="1"
@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="全部"
-                    android:textColor="@color/white"
+                    android:textColor="@color/NiconColor"
                     android:id="@+id/text1"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>
@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="製造工程技術"
-                    android:textColor="@color/black"
+                    android:textColor="@color/iconColor"
                     android:id="@+id/text2"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="營建技術"
-                    android:textColor="@color/black"
+                    android:textColor="@color/iconColor"
                     android:id="@+id/text3"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>
@@ -96,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="資訊與通訊技術"
-                    android:textColor="@color/black"
+                    android:textColor="@color/iconColor"
                     android:id="@+id/text4"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>
@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="運輸與物流"
-                    android:textColor="@color/black"
+                    android:textColor="@color/iconColor"
                     android:id="@+id/text5"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>
@@ -136,7 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="社會與個人服務"
-                    android:textColor="@color/black"
+                    android:textColor="@color/iconColor"
                     android:id="@+id/text6"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>
@@ -156,7 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="藝術與時尚"
-                    android:textColor="@color/black"
+                    android:textColor="@color/iconColor"
                     android:id="@+id/text7"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>
@@ -176,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="青少年組"
-                    android:textColor="@color/black"
+                    android:textColor="@color/iconColor"
                     android:id="@+id/text8"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>
@@ -196,7 +196,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="未來職類"
-                    android:textColor="@color/black"
+                    android:textColor="@color/iconColor"
                     android:id="@+id/text9"
                     android:layout_gravity="center"/>
             </com.google.android.material.card.MaterialCardView>

@@ -2,4 +2,19 @@
     <string name="app_name">s1_0527</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="userType">
+        <item>系統管理者</item>
+        <item>活動管理</item>
+        <item>一般使用者</item>
+    </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string-array name="articleType">
+        <item>全國賽</item>
+        <item>身障賽</item>
+        <item>國際賽</item>
+        <item>展能節</item>
+        <item>達人盃</item>
+    </string-array>
 </resources>

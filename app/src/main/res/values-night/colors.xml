@@ -10,4 +10,5 @@
     <color name="lightGreen">#ABDE67</color>
     <color name="deepBlue">#4F71BE</color>
     <color name="iconColor">#FFFFFFFF</color>
+    <color name="NiconColor">#000000</color>
 </resources>

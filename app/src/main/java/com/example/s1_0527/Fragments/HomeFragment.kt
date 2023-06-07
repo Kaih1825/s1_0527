@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.example.s1_0527.Adapters.HomeViewPagerAdapter
 import com.example.s1_0527.Adapters.NewsListAdapter
 import com.example.s1_0527.R
+import com.example.s1_0527.SqlMethod
 import com.example.s1_0527.databinding.FragmentHomeBinding
 import kotlinx.coroutines.delay
 import okhttp3.*
@@ -64,8 +66,10 @@ class HomeFragment : Fragment() {
                 var tisJsonArray = JSONArray(jsonText)
                 for(i in 0 until  tisJsonArray.length()){
                     jsonObjectArray.add(tisJsonArray.getJSONObject(i))
+                    var tisObject=tisJsonArray.getJSONObject(i)
+                    if(context!=null) SqlMethod.news(context!!).insert(tisObject.getInt("id"),tisObject.getString("content"),tisObject.getString("date"),tisObject.getString("linktext"),tisObject.getString("pics"),tisObject.getString("title"),tisObject.getString("type"),tisObject.getString("url"),tisObject.getInt("authorType"))
                 }
-                activity!!.runOnUiThread {
+                activity?.runOnUiThread {
                     b.list.adapter=NewsListAdapter(requireContext(),jsonObjectArray,3)
                     tisJsonObjectArray= jsonObjectArray.clone() as ArrayList<JSONObject>
                 }
@@ -87,7 +91,7 @@ class HomeFragment : Fragment() {
                     jsonObjectArray.filter { it.getString("type") == typeArray[i] } as ArrayList<JSONObject>
                 }
 
-                b.list.adapter = NewsListAdapter(requireContext(), tisJsonObjectArray, 3)
+                if(context!=null) b.list.adapter = NewsListAdapter(requireContext(), tisJsonObjectArray, 3)
             }
         }
 
@@ -100,7 +104,7 @@ class HomeFragment : Fragment() {
         b.list.setOnItemClickListener { parent, view, position, id -> run{
             var fm=requireFragmentManager().beginTransaction()
             fm.addToBackStack(fm.javaClass.name)
-            fm.replace(R.id.layout,NewsInfoFragment(tisJsonObjectArray[position])).commit()
+            fm.replace(R.id.layout,NewsInfoFragment(tisJsonObjectArray[position],null)).commit()
         } }
 
         return b.root
